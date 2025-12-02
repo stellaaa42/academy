@@ -40,7 +40,7 @@
         `d dd 3dd d$`
         `P p`
 
-![rst](https://github.com/halcyon-09/academy/tree/main/verilog_fpga/pics/rand_expected_dut.png)
-![rst](https://github.com/halcyon-09/academy/tree/main/verilog_fpga/pics/rand_rst.png)
-![alu](https://github.com/halcyon-09/academy/tree/main/verilog_fpga/pics/alu_2_states.png)
+![rst](https://github.com/globule-rl/academy/tree/main/verilog_fpga/pics/rand_expected_dut.png)
+![rst](https://github.com/globule-rl/academy/tree/main/verilog_fpga/pics/rand_rst.png)
+![alu](https://github.com/globule-rl/academy/tree/main/verilog_fpga/pics/alu_2_states.png)
 

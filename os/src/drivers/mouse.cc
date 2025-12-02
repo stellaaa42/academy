@@ -12,7 +12,7 @@ void MouseEvHandler::OnMouseUp(uint8_t btn) {}
 void MouseEvHandler::onMouseMove(int x , int y) {}
 
 MouseDriver::MouseDriver(MouseEvHandler* mEvHandler, IrqManager* irqs)
-: IrqHandler(0x2C, irqs),
+: IrqHandler(0x2C, irqs), Driver(),
     cmdPort(0x64), dataPort(0x60) {
         this->mEvHandler = mEvHandler;
 }

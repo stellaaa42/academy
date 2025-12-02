@@ -1,19 +1,20 @@
 # curriculum/roadmap
 
 > [!note]
-> master the brain
+> y = f(x, t, p, c, t')
+    where t=truth, p=~perception, c=context, t'=time in the model
 
 ## projects
-    - [x] emulator
+    - [x] os
+    - [x] workflow/build.yml
+    - [x] test
     - [x] compiler
-    - [ ] os
-    - [ ] design pattern
-    - [ ] FPGA
-    - [ ] wiping robot
-    - [ ] workflow/build.yml
-    - [ ] test
+    - [x] FPGA
     - [x] web
-    - [ ] electric motor controller
+    - [ ] emulator
+    - [ ] design pattern
+    - [ ] wiping/toy robot
+    - [ ] motor controller
 
 ## lan
     - [x] c
@@ -25,6 +26,16 @@
     - [x] java
     - [ ] qt
     - [ ] swift
+
+## ref
+    - [x] singularity
+    - [x] permutation city
+    - [x] prime intellect
+    - [x] infinite jest
+    - [x] the hitchhiker's guide to the galaxy
+    - [ ] a walk in the park
+    - [ ] attention is all you need
+    
 
 > [!caution]
 >  eof

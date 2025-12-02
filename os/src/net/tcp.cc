@@ -9,7 +9,7 @@ Tcp::Tcp(Ipv4* ipv4) {
 }
 Tcp::~Tcp() {}
 
-TcpSocket* Tcp::Listen(uint16_t port) {
+TcpSocket* Tcp::Listen(int16_t port) {
 
 }
 void Tcp::Bind(TcpSocket* socket, TcpHandler* tcpHandler) {

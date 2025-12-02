@@ -21,7 +21,7 @@
 #include <net/tcp.h>
 #include <net/udp.h>
 
-#define GRAPHICSMODE
+// #define GRAPHICSMODE
 
 using namespace os;
 using namespace os::common;
@@ -145,7 +145,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
         #ifdef GRAPHICSMODE
             MouseDriver mouse(&desktop, &irqs);
         #else
-            MouseDriver mEvHandler;
+            MouseEvHandler mEvHandler;
             MouseDriver mouse(&mEvHandler, &irqs);
         #endif
         drvManager.AddDriver(&mouse);

@@ -1,0 +1,57 @@
+
+name: Kernel Build
+
+on:
+  push:
+    branches: [ main, devop ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dev
+      - run: make test
+
+      - name: Upload res
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-res
+          path: testReport.txt
+        if: always()
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prod
+        run: make clean && make
+
+      - name: Build iso
+        run: make mykernel.iso
+
+      - name: Upload res
+        uses: actions/upload-artifact@v3
+        with:
+          name: kernel-build
+          path: |
+            kernel
+            *.bin
+            *.elf
+            *.img
+        if: always()
+      - name: Check status
+        if: failure()
+        run: echo "Build failed - check logs above"
+

@@ -1,11 +1,3 @@
-# sudo apt-get install g++ binutils libc6-dev-i386
-# sudo apt-get install VirtualBox grub-legacy xorriso
-
-# .s -> .o assembly multiboot header, kernel entry(stack constructor)
-#	2Mib mebibyte 1Mib 1,048,576 bytes 1Mb 1,000,000 bytes
-# .cpp -> .o obj/ data
-# .ld -> link two .o
-# -> .bin -> .iso -> clean up
 
 GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib - fno-builtin \ 
 			-fno-exceptions -fno-leading-underscore -Wno-write-strings
@@ -35,24 +27,29 @@ objects = obj/loader.o \
 		  obj/net/ipv4.o \
 		  obj/net/udp.o \
 		  obj/net/tcp.o \
-		  obj/kernel.o   
-run: mykernel.iso
+		  obj/kernel.o  \
+
+run-virtualbox: mykernel.iso
 	(killall VirtualBox && sleep 1) || true
-	VirtualBox --startvm "My Operating System" &
+	VirtualBox --startvm "My Os" &
+run-qemu: mykernel.iso
+	qemu-system-i386 -cdrom mykernel.iso -m 512 -boot d
+run-qemu-debug: mykernel.iso
+	qemu-system-i386 -cdrom mykernel.iso -m 512 -boot d -s -S
+run: run-qemu
 
 obj/%.o: src/%.cpp
 	mkdir -p $(@D)
 	gcc $(GCCPARAMS) -c -o $@ $<
 obj/%.o: src/%.s
 	mkdir -p $(@D)
+	as $(ASPPARAMS) -o $@ $<
 
 mykernel.bin: linker.ld $(objects)
 	ld $(LDPARAMS) -T $< -o $@ $(objects)
 
 mykernel.iso: mykernel.bin
-	mkdir iso
-	mkdir iso/boot
-	mkdir iso/boot/grub
+	mkdir -p iso/boot/grub
 	cp mykernel.bin iso/boot/mykernel.bin
 	echo 'set timeout=0' 				   > iso/boot/grub/grub.cfg
 	echo 'set default=0'				  >> iso/boot/grub/grub.cfg
