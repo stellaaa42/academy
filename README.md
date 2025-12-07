@@ -5,13 +5,13 @@
     where t=truth, p=~perception, c=context, t'=time in the model
 
 ## projects
-    - [x] os
+    - [x] os/qemu
     - [x] workflow/build.yml
     - [x] test
     - [x] compiler
     - [x] FPGA
+    - [x] verilog/gtkwave/verilator
     - [x] web
-    - [ ] emulator
     - [ ] design pattern
     - [ ] wiping/toy robot
     - [ ] motor controller
@@ -24,8 +24,7 @@
     - [x] haskell
     - [x] svelte/javascript
     - [x] java
-    - [ ] qt
-    - [ ] swift
+    - [x] python
 
 ## ref
     - [x] singularity
